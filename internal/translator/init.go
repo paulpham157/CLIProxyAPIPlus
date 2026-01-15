@@ -52,4 +52,9 @@ import (
 	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/windsurf/gemini-cli"
 	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/windsurf/openai/chat-completions"
 	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/windsurf/openai/responses"
+
+	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/continue/openai/chat-completions"
+	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/openai/continue"
+	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/continue/claude"
+	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/claude/continue"
 )

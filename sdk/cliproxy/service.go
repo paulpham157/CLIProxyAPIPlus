@@ -385,6 +385,8 @@ func (s *Service) ensureExecutorsForAuth(a *coreauth.Auth) {
 		s.coreManager.RegisterExecutor(executor.NewGitHubCopilotExecutor(s.cfg))
 	case "cursor":
 		s.coreManager.RegisterExecutor(executor.NewCursorExecutor(s.cfg))
+	case "continue":
+		s.coreManager.RegisterExecutor(executor.NewContinueExecutor(s.cfg))
 	case "v0dev", "v0.dev":
 		s.coreManager.RegisterExecutor(executor.NewV0Executor(s.cfg))
 	case "bolt":
@@ -780,6 +782,9 @@ func (s *Service) registerModelsForAuth(a *coreauth.Auth) {
 		models = applyExcludedModels(models, excluded)
 	case "cursor":
 		models = registry.GetCursorModels()
+		models = applyExcludedModels(models, excluded)
+	case "continue":
+		models = registry.GetContinueModels()
 		models = applyExcludedModels(models, excluded)
 	case "kiro":
 		models = registry.GetKiroModels()

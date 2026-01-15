@@ -1221,6 +1221,102 @@ func GetAmazonQModels() []*ModelInfo {
 	}
 }
 
+// GetContinueModels returns the Continue.dev model definitions.
+// Continue.dev provides access to various AI models through their API.
+func GetContinueModels() []*ModelInfo {
+	now := int64(1732752000)
+	return []*ModelInfo{
+		{
+			ID:                  "gpt-4o",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "continue",
+			Type:                "continue",
+			DisplayName:         "GPT-4o",
+			Description:         "OpenAI GPT-4o via Continue.dev",
+			ContextLength:       128000,
+			MaxCompletionTokens: 16384,
+		},
+		{
+			ID:                  "gpt-4o-mini",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "continue",
+			Type:                "continue",
+			DisplayName:         "GPT-4o Mini",
+			Description:         "OpenAI GPT-4o Mini via Continue.dev",
+			ContextLength:       128000,
+			MaxCompletionTokens: 16384,
+		},
+		{
+			ID:                  "claude-3-5-sonnet-20241022",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "continue",
+			Type:                "continue",
+			DisplayName:         "Claude 3.5 Sonnet",
+			Description:         "Anthropic Claude 3.5 Sonnet via Continue.dev",
+			ContextLength:       200000,
+			MaxCompletionTokens: 8192,
+		},
+		{
+			ID:                  "claude-3-5-haiku-20241022",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "continue",
+			Type:                "continue",
+			DisplayName:         "Claude 3.5 Haiku",
+			Description:         "Anthropic Claude 3.5 Haiku via Continue.dev",
+			ContextLength:       200000,
+			MaxCompletionTokens: 8192,
+		},
+		{
+			ID:                  "gemini-2.0-flash-exp",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "continue",
+			Type:                "continue",
+			DisplayName:         "Gemini 2.0 Flash (Experimental)",
+			Description:         "Google Gemini 2.0 Flash Experimental via Continue.dev",
+			ContextLength:       1048576,
+			MaxCompletionTokens: 8192,
+		},
+		{
+			ID:                  "gemini-1.5-pro",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "continue",
+			Type:                "continue",
+			DisplayName:         "Gemini 1.5 Pro",
+			Description:         "Google Gemini 1.5 Pro via Continue.dev",
+			ContextLength:       2097152,
+			MaxCompletionTokens: 8192,
+		},
+		{
+			ID:                  "deepseek-chat",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "continue",
+			Type:                "continue",
+			DisplayName:         "DeepSeek Chat",
+			Description:         "DeepSeek Chat via Continue.dev",
+			ContextLength:       64000,
+			MaxCompletionTokens: 8192,
+		},
+		{
+			ID:                  "deepseek-coder",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "continue",
+			Type:                "continue",
+			DisplayName:         "DeepSeek Coder",
+			Description:         "DeepSeek Coder via Continue.dev",
+			ContextLength:       64000,
+			MaxCompletionTokens: 8192,
+		},
+	}
+}
+
 // GetBoltModels returns the Bolt.new model definitions.
 // Bolt.new uses Claude models with WebContainer-specific system prompts
 // for browser-based development environments.

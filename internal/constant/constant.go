@@ -33,4 +33,7 @@ const (
 
 	// Windsurf represents the Windsurf AI provider identifier.
 	Windsurf = "windsurf"
+
+	// Continue represents the Continue.dev provider identifier.
+	Continue = "continue"
 )
