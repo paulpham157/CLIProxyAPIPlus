@@ -317,6 +317,7 @@ func (s *Server) setupRoutes() {
 	claudeCodeHandlers := claude.NewClaudeCodeAPIHandler(s.handlers)
 	openaiResponsesHandlers := openai.NewOpenAIResponsesAPIHandler(s.handlers)
 	providerProxyHandler := internalHandlers.NewProviderProxyHandler(s.handlers)
+	healthHandler := internalHandlers.NewHealthHandler(s.handlers)
 
 	// OpenAI compatible API routes
 	v1 := s.engine.Group("/v1")
@@ -339,6 +340,12 @@ func (s *Server) setupRoutes() {
 		v1beta.GET("/models/*action", geminiHandlers.GeminiGetHandler)
 	}
 
+	// Health check endpoint
+	v0 := s.engine.Group("/v0")
+	{
+		v0.GET("/health", healthHandler.GetHealth)
+	}
+
 	// Root endpoint
 	s.engine.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -348,6 +355,7 @@ func (s *Server) setupRoutes() {
 				"POST /v1/completions",
 				"GET /v1/models",
 				"POST /api/providers/:provider",
+				"GET /v0/health",
 			},
 		})
 	})
