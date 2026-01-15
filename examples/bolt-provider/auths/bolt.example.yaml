@@ -1,0 +1,13 @@
+provider: bolt
+attributes:
+  api_key: sk-ant-api03-your-anthropic-api-key-here
+  base_url: https://api.anthropic.com
+label: Bolt Code Generation Assistant
+
+# Optional: Custom headers
+# attributes:
+#   custom_headers: |
+#     X-Custom-Header: value
+
+# Optional: Proxy configuration
+# proxy_url: http://proxy.example.com:8080

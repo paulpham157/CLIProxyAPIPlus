@@ -385,6 +385,8 @@ func (s *Service) ensureExecutorsForAuth(a *coreauth.Auth) {
 		s.coreManager.RegisterExecutor(executor.NewGitHubCopilotExecutor(s.cfg))
 	case "v0dev", "v0.dev":
 		s.coreManager.RegisterExecutor(executor.NewV0Executor(s.cfg))
+	case "bolt":
+		s.coreManager.RegisterExecutor(executor.NewBoltExecutor(s.cfg))
 	default:
 		providerKey := strings.ToLower(strings.TrimSpace(a.Provider))
 		if providerKey == "" {
@@ -776,6 +778,9 @@ func (s *Service) registerModelsForAuth(a *coreauth.Auth) {
 		models = applyExcludedModels(models, excluded)
 	case "kiro":
 		models = registry.GetKiroModels()
+		models = applyExcludedModels(models, excluded)
+	case "bolt":
+		models = registry.GetBoltModels()
 		models = applyExcludedModels(models, excluded)
 	default:
 		// Handle OpenAI-compatibility providers by name using config

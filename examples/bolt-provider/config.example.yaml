@@ -1,0 +1,33 @@
+server:
+  host: localhost:8080
+  log_level: info
+
+auth_dir: ./auths
+
+# Claude API configuration for Bolt provider
+claude_key:
+  - api_key: sk-ant-api03-your-anthropic-api-key-here
+    base_url: https://api.anthropic.com
+    models:
+      - name: claude-sonnet-4-5
+        alias: bolt-sonnet
+        max_tokens: 8000
+      - name: claude-3-7-sonnet-20250219
+        alias: bolt-sonnet-thinking
+        max_tokens: 16000
+      - name: claude-opus-4-5
+        alias: bolt-opus
+        max_tokens: 8000
+      - name: claude-3-5-haiku-20241022
+        alias: bolt-haiku
+        max_tokens: 8000
+
+# Optional: Request retry configuration
+retry:
+  max_retries: 2
+  max_retry_interval: 30s
+
+# Optional: Logging configuration
+logging:
+  request_log: true
+  request_log_path: ./logs

@@ -1,0 +1,70 @@
+# Bolt.new Provider Configuration Example
+# This example shows how to configure the Bolt provider for code generation
+# using Anthropic Claude API with WebContainer-specific system prompts.
+
+# Basic authentication configuration
+# Add your Bolt/Claude API key to auths directory as bolt.json:
+# {
+#   "provider": "bolt",
+#   "api_key": "sk-ant-api03-...",
+#   "label": "My Bolt Account"
+# }
+
+# Optional: Override base URL if using a custom endpoint
+# {
+#   "provider": "bolt",
+#   "api_key": "sk-ant-api03-...",
+#   "base_url": "https://api.anthropic.com",
+#   "label": "My Bolt Account"
+# }
+
+# Optional: Specify a default model
+# {
+#   "provider": "bolt",
+#   "api_key": "sk-ant-api03-...",
+#   "model": "claude-sonnet-4-5",
+#   "label": "My Bolt Account"
+# }
+
+# Available Bolt Models:
+# - claude-sonnet-4-5: Claude 4.5 Sonnet optimized for Bolt.new (default, best balance)
+# - claude-opus-4-5: Claude 4.5 Opus optimized for Bolt.new (most capable)
+# - claude-haiku-4-5: Claude 4.5 Haiku optimized for Bolt.new (fastest)
+# - claude-3-7-sonnet: Claude 3.7 Sonnet optimized for Bolt.new
+# - claude-3-5-sonnet: Claude 3.5 Sonnet optimized for Bolt.new
+
+# Server configuration
+host: "127.0.0.1"
+port: 8080
+
+# Auth directory for storing authentication credentials
+auth_dir: "./auths"
+
+# Example usage with curl:
+# curl http://localhost:8080/v1/chat/completions \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "model": "claude-sonnet-4-5",
+#     "messages": [
+#       {
+#         "role": "user",
+#         "content": "Create a simple todo app using React and Vite"
+#       }
+#     ],
+#     "stream": true
+#   }'
+
+# The Bolt provider automatically injects WebContainer-specific system prompts
+# that guide Claude to generate code optimized for browser-based environments:
+# - Uses npm packages instead of native binaries
+# - Prefers Vite for development servers
+# - Uses boltArtifact and boltAction tags for structured output
+# - Supports file creation, shell commands, and dev server management
+
+# Routing configuration (optional)
+routing:
+  strategy: "round-robin"  # or "fill-first"
+
+# Retry configuration (optional)
+request_retry: 3
+max_retry_interval: 60

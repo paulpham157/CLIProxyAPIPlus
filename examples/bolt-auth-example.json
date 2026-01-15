@@ -1,0 +1,6 @@
+{
+  "provider": "bolt",
+  "api_key": "sk-ant-api03-your-anthropic-api-key-here",
+  "label": "Bolt.new Development",
+  "model": "claude-sonnet-4-5"
+}

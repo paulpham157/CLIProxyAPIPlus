@@ -1168,3 +1168,69 @@ func GetAmazonQModels() []*ModelInfo {
 		},
 	}
 }
+
+// GetBoltModels returns the Bolt.new model definitions.
+// Bolt.new uses Claude models with WebContainer-specific system prompts
+// for browser-based development environments.
+func GetBoltModels() []*ModelInfo {
+	return []*ModelInfo{
+		{
+			ID:                  "claude-sonnet-4-5",
+			Object:              "model",
+			Created:             1759104000, // 2025-09-29
+			OwnedBy:             "bolt",
+			Type:                "bolt",
+			DisplayName:         "Bolt Claude 4.5 Sonnet",
+			Description:         "Claude 4.5 Sonnet optimized for Bolt.new WebContainer code generation",
+			ContextLength:       200000,
+			MaxCompletionTokens: 8000,
+			Thinking:            &ThinkingSupport{Min: 1024, Max: 100000, ZeroAllowed: false, DynamicAllowed: true},
+		},
+		{
+			ID:                  "claude-opus-4-5",
+			Object:              "model",
+			Created:             1761955200, // 2025-11-01
+			OwnedBy:             "bolt",
+			Type:                "bolt",
+			DisplayName:         "Bolt Claude 4.5 Opus",
+			Description:         "Claude 4.5 Opus optimized for Bolt.new WebContainer code generation",
+			ContextLength:       200000,
+			MaxCompletionTokens: 8000,
+			Thinking:            &ThinkingSupport{Min: 1024, Max: 100000, ZeroAllowed: false, DynamicAllowed: true},
+		},
+		{
+			ID:                  "claude-haiku-4-5",
+			Object:              "model",
+			Created:             1759276800, // 2025-10-01
+			OwnedBy:             "bolt",
+			Type:                "bolt",
+			DisplayName:         "Bolt Claude 4.5 Haiku",
+			Description:         "Bolt Claude 4.5 Haiku optimized for Bolt.new WebContainer code generation",
+			ContextLength:       200000,
+			MaxCompletionTokens: 8000,
+		},
+		{
+			ID:                  "claude-3-7-sonnet",
+			Object:              "model",
+			Created:             1708300800, // 2025-02-19
+			OwnedBy:             "bolt",
+			Type:                "bolt",
+			DisplayName:         "Bolt Claude 3.7 Sonnet",
+			Description:         "Claude 3.7 Sonnet optimized for Bolt.new WebContainer code generation",
+			ContextLength:       128000,
+			MaxCompletionTokens: 8000,
+			Thinking:            &ThinkingSupport{Min: 1024, Max: 100000, ZeroAllowed: false, DynamicAllowed: true},
+		},
+		{
+			ID:                  "claude-3-5-sonnet",
+			Object:              "model",
+			Created:             1729555200, // 2024-10-22
+			OwnedBy:             "bolt",
+			Type:                "bolt",
+			DisplayName:         "Bolt Claude 3.5 Sonnet",
+			Description:         "Claude 3.5 Sonnet optimized for Bolt.new WebContainer code generation",
+			ContextLength:       128000,
+			MaxCompletionTokens: 8000,
+		},
+	}
+}
