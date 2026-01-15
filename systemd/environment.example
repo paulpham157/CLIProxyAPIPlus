@@ -1,0 +1,52 @@
+# Example systemd environment file for CLIProxyAPI Plus
+# Copy this file to /etc/cli-proxy-api-plus/environment
+# and customize according to your deployment needs.
+#
+# NOTE: This file supplements or overrides the .env file in the working directory.
+# Use this for systemd-specific or production environment variables.
+
+# ------------------------------------------------------------------------------
+# Management Web UI
+# ------------------------------------------------------------------------------
+# MANAGEMENT_PASSWORD=change-me-to-a-strong-password
+
+# ------------------------------------------------------------------------------
+# Postgres Token Store (recommended for production)
+# ------------------------------------------------------------------------------
+# PGSTORE_DSN=postgresql://user:pass@localhost:5432/cliproxy
+# PGSTORE_SCHEMA=public
+# PGSTORE_LOCAL_PATH=/var/lib/cli-proxy-api-plus/pgstore
+
+# ------------------------------------------------------------------------------
+# Git-Backed Config Store (optional)
+# ------------------------------------------------------------------------------
+# GITSTORE_GIT_URL=https://github.com/your-org/cli-proxy-config.git
+# GITSTORE_GIT_USERNAME=git-user
+# GITSTORE_GIT_TOKEN=ghp_your_personal_access_token
+# GITSTORE_LOCAL_PATH=/var/lib/cli-proxy-api-plus/gitstore
+
+# ------------------------------------------------------------------------------
+# Object Store Token Store (optional)
+# ------------------------------------------------------------------------------
+# OBJECTSTORE_ENDPOINT=https://s3.your-cloud.example.com
+# OBJECTSTORE_BUCKET=cli-proxy-config
+# OBJECTSTORE_ACCESS_KEY=your_access_key
+# OBJECTSTORE_SECRET_KEY=your_secret_key
+# OBJECTSTORE_LOCAL_PATH=/var/lib/cli-proxy-api-plus/objectstore
+
+# ------------------------------------------------------------------------------
+# Provider API Keys
+# ------------------------------------------------------------------------------
+# BOLT_ANTHROPIC_API_KEY=sk-ant-your-anthropic-api-key
+# V0_API_KEY=v0-your-api-key
+
+# ------------------------------------------------------------------------------
+# Provider Enable/Disable Flags
+# ------------------------------------------------------------------------------
+# ENABLE_BOLT_PROVIDER=true
+# ENABLE_V0_PROVIDER=true
+
+# ------------------------------------------------------------------------------
+# Cloud deployment mode (optional)
+# ------------------------------------------------------------------------------
+# DEPLOY=cloud

@@ -1,0 +1,17 @@
+[Unit]
+Description=CLIProxyAPI Plus Maintenance Timer
+Documentation=https://github.com/router-for-me/CLIProxyAPI
+
+[Timer]
+# Run daily at 3 AM
+OnCalendar=daily
+OnCalendar=*-*-* 03:00:00
+
+# Run 5 minutes after boot if missed
+Persistent=true
+
+# Add randomized delay of up to 10 minutes to avoid thundering herd
+RandomizedDelaySec=10min
+
+[Install]
+WantedBy=timers.target
