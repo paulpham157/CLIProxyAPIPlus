@@ -30,4 +30,7 @@ const (
 
 	// Cursor represents the Cursor AI provider identifier.
 	Cursor = "cursor"
+
+	// Windsurf represents the Windsurf AI provider identifier.
+	Windsurf = "windsurf"
 )
