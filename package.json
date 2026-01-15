@@ -1,0 +1,15 @@
+{
+  "name": "provider-selector-ui",
+  "version": "1.0.0",
+  "description": "Provider selection UI component",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "typescript": "^5.3.3"
+  }
+}
