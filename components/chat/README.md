@@ -1,8 +1,14 @@
-# Chat Interface Component
+# Chat Components
+
+This directory contains React/TypeScript components for the CLI Proxy API Plus chat interface.
+
+## Components
+
+### Chat Interface Component
 
 A React/TypeScript chat interface component that integrates with the CLI Proxy API Plus backend. This component provides a user-friendly interface for interacting with multiple AI providers through a unified chat interface.
 
-## Features
+#### Features
 
 - **Multi-Provider Support**: Seamlessly switch between GitHub Copilot, Kiro (AWS CodeWhisperer), Claude, Gemini, and OpenAI
 - **Provider Selection**: Dropdown to choose between available providers with capability badges and status indicators
@@ -17,6 +23,21 @@ A React/TypeScript chat interface component that integrates with the CLI Proxy A
 - **Status Badges**: Visual indicators for provider availability
 - **Capability Display**: Shows provider features (streaming, code generation, multimodal, context window)
 
+### Code Preview Component
+
+A fully-featured code preview component with syntax highlighting, copy-to-clipboard functionality, and live iframe preview for HTML/React/JSX components. Designed for AI chat interfaces like Bolt.new and v0.dev.
+
+#### Features
+
+- **Syntax Highlighting**: Uses `react-syntax-highlighter` with Prism and OneDark theme
+- **Copy to Clipboard**: One-click code copying with visual feedback
+- **Live Preview**: Iframe-based preview for HTML, JSX, and TSX components
+- **Tab Interface**: Toggle between code view and live preview
+- **Refresh Preview**: Reload the preview without losing state
+- **File Name Display**: Shows the code file name in the header
+- **Responsive Design**: Mobile-friendly with adaptive layouts
+- **Source Tracking**: Supports marking content from 'bolt.new', 'v0.dev', or default sources
+
 ## Installation
 
 ```bash
@@ -26,7 +47,7 @@ npm install
 
 ## Usage
 
-### Basic Implementation
+### Chat Interface
 
 ```tsx
 import { ChatInterface } from './components/chat/chat-interface';
@@ -42,9 +63,57 @@ function App() {
 }
 ```
 
+### Code Preview
+
+#### Basic Code Display
+
+```tsx
+import { CodePreview } from './components/chat/code-preview';
+
+<CodePreview
+  code={`console.log('Hello, World!');`}
+  language="javascript"
+  fileName="example.js"
+/>
+```
+
+#### HTML with Live Preview
+
+```tsx
+<CodePreview
+  code={htmlString}
+  language="html"
+  fileName="index.html"
+  showPreview={true}
+  source="bolt.new"
+/>
+```
+
+#### React Component with Preview
+
+```tsx
+<CodePreview
+  code={reactComponentCode}
+  language="jsx"
+  fileName="Counter.jsx"
+  showPreview={true}
+  source="v0.dev"
+/>
+```
+
+## Code Preview Props
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `code` | `string` | Yes | - | The code content to display |
+| `language` | `string` | Yes | - | Programming language for syntax highlighting |
+| `fileName` | `string` | No | - | Optional file name to display in header |
+| `showPreview` | `boolean` | No | `false` | Enable live preview tab (only for html/jsx/tsx) |
+| `source` | `'bolt.new' \| 'v0.dev' \| 'default'` | No | `'default'` | Source identifier for the code |
+
 ## Supported Providers
 
-The component supports the following AI providers:
+The chat component supports the following AI providers:
 
 ### Provider Types
 
@@ -121,6 +190,38 @@ Supported features:
 - Copy to clipboard functionality
 - VS Code Dark+ theme
 
+## Supported Languages
+
+The code preview component supports all languages supported by `react-syntax-highlighter`, including:
+- JavaScript/TypeScript
+- JSX/TSX
+- HTML/CSS
+- Python
+- Go
+- Java
+- C/C++
+- And many more...
+
+## Preview Mode
+
+Preview mode is automatically enabled when:
+- `showPreview` is set to `true`
+- Language is `html`, `jsx`, or `tsx`
+
+For React components (JSX/TSX), the preview:
+- Loads React 18 and ReactDOM from CDN
+- Uses Babel Standalone for JSX transformation
+- Assumes the component exports an `App` function
+- Provides error handling with helpful messages
+
+## Security
+
+The iframe preview uses sandboxing with:
+- `allow-scripts`: Enables JavaScript execution
+- `allow-same-origin`: Allows same-origin access for iframe document manipulation
+
+API keys are stored in component state (not persisted). Use password input type for API key entry. HTTPS recommended for production deployments.
+
 ## Store Access
 
 Access the provider store directly for advanced usage:
@@ -156,7 +257,7 @@ Each provider displays:
 
 ### Props
 
-Currently, the component doesn't accept props but manages its own state internally.
+Currently, the chat interface component doesn't accept props but manages its own state internally.
 
 ### Internal State
 
@@ -175,21 +276,14 @@ Currently, the component doesn't accept props but manages its own state internal
 
 ## Styling
 
-The component uses Tailwind CSS classes. Ensure Tailwind is configured in your project with the following colors:
+The components use Tailwind CSS classes and built-in dark themes. Ensure Tailwind is configured in your project with the following colors:
 - `gray`, `indigo`, `green`, `red`, `blue`, `purple`, `amber`
 
 Dark theme inspired by VS Code:
 - Dark background: `#1e1e1e`
 - Accent color: `#007acc`
 - Code background: `#2d2d30`
-- Syntax highlighting: VS Code Dark+ theme
-
-## Security Considerations
-
-- API keys are stored in component state (not persisted)
-- Use password input type for API key entry
-- HTTPS recommended for production deployments
-- API keys are sent via Authorization header
+- Syntax highlighting: VS Code Dark+ theme / OneDark theme
 
 ## Development
 
@@ -220,11 +314,20 @@ host: 0.0.0.0
 port: 8080
 ```
 
+## Example Integration
+
+See `code-preview.example.tsx` for complete usage examples including:
+- HTML preview with custom styling
+- Interactive React counter component
+- TypeScript code display
+
 ## Browser Support
 
 - Chrome/Edge (latest)
 - Firefox (latest)
 - Safari (latest)
+
+Modern browsers with ES6+ support, Clipboard API, and iframe sandbox support required.
 
 ## License
 

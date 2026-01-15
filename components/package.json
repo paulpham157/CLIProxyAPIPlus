@@ -1,0 +1,22 @@
+{
+  "name": "chat-components",
+  "version": "1.0.0",
+  "description": "Chat components including code preview with syntax highlighting and iframe preview",
+  "main": "index.ts",
+  "dependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "react-markdown": "^9.0.0",
+    "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-syntax-highlighter": "^15.5.11",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  }
+}

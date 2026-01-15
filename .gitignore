@@ -67,3 +67,7 @@ build/
 *.tsbuildinfo
 .npm
 .eslintcache
+
+# Frontend components (Node.js)
+components/node_modules/
+components/package-lock.json
