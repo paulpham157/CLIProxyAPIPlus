@@ -19,6 +19,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/router-for-me/CLIProxyAPI/v6/internal/access"
+	internalHandlers "github.com/router-for-me/CLIProxyAPI/v6/internal/api/handlers"
 	managementHandlers "github.com/router-for-me/CLIProxyAPI/v6/internal/api/handlers/management"
 	"github.com/router-for-me/CLIProxyAPI/v6/internal/api/middleware"
 	"github.com/router-for-me/CLIProxyAPI/v6/internal/api/modules"
@@ -315,6 +316,7 @@ func (s *Server) setupRoutes() {
 	geminiCLIHandlers := gemini.NewGeminiCLIAPIHandler(s.handlers)
 	claudeCodeHandlers := claude.NewClaudeCodeAPIHandler(s.handlers)
 	openaiResponsesHandlers := openai.NewOpenAIResponsesAPIHandler(s.handlers)
+	providerProxyHandler := internalHandlers.NewProviderProxyHandler(s.handlers)
 
 	// OpenAI compatible API routes
 	v1 := s.engine.Group("/v1")
@@ -345,6 +347,7 @@ func (s *Server) setupRoutes() {
 				"POST /v1/chat/completions",
 				"POST /v1/completions",
 				"GET /v1/models",
+				"POST /api/providers/:provider",
 			},
 		})
 	})
@@ -355,6 +358,13 @@ func (s *Server) setupRoutes() {
 		c.JSON(http.StatusOK, gin.H{"status": "ok"})
 	})
 	s.engine.POST("/v1internal:method", geminiCLIHandlers.CLIHandler)
+
+	// Provider proxy API routes
+	api := s.engine.Group("/api")
+	api.Use(AuthMiddleware(s.accessManager))
+	{
+		api.POST("/providers/:provider", providerProxyHandler.HandleProviderProxy)
+	}
 
 	// OAuth callback endpoints (reuse main server port)
 	// These endpoints receive provider redirects and persist
