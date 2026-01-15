@@ -21,6 +21,7 @@ const (
 	ProviderTypeOpenAI       ProviderType = constant.OpenAI
 	ProviderTypeAntigravity  ProviderType = constant.Antigravity
 	ProviderTypeKiro         ProviderType = constant.Kiro
+	ProviderTypeCursor       ProviderType = constant.Cursor
 )
 
 // Provider represents a configured AI service provider with its executor and metadata.
@@ -125,6 +126,14 @@ func (f *ProviderFactory) initializeProviders() {
 		Name:        "Antigravity",
 		Description: "Antigravity AI service",
 		Executor:    executor.NewAntigravityExecutor(f.cfg),
+		Enabled:     true,
+	}
+
+	f.providers[ProviderTypeCursor] = Provider{
+		Type:        ProviderTypeCursor,
+		Name:        "Cursor",
+		Description: "Cursor AI service",
+		Executor:    executor.NewCursorExecutor(f.cfg),
 		Enabled:     true,
 	}
 }

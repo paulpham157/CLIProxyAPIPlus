@@ -808,6 +808,58 @@ func LookupStaticModelInfo(modelID string) *ModelInfo {
 	return nil
 }
 
+// GetCursorModels returns the available models for Cursor AI.
+// These models are available through the Cursor AI API.
+func GetCursorModels() []*ModelInfo {
+	now := int64(1732752000) // 2024-11-27
+	return []*ModelInfo{
+		{
+			ID:                  "cursor-small",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "cursor",
+			Type:                "cursor",
+			DisplayName:         "Cursor Small",
+			Description:         "Cursor AI Small Model",
+			ContextLength:       128000,
+			MaxCompletionTokens: 4096,
+		},
+		{
+			ID:                  "cursor-medium",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "cursor",
+			Type:                "cursor",
+			DisplayName:         "Cursor Medium",
+			Description:         "Cursor AI Medium Model",
+			ContextLength:       128000,
+			MaxCompletionTokens: 8192,
+		},
+		{
+			ID:                  "gpt-4o",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "cursor",
+			Type:                "cursor",
+			DisplayName:         "GPT-4o",
+			Description:         "GPT-4o via Cursor",
+			ContextLength:       128000,
+			MaxCompletionTokens: 16384,
+		},
+		{
+			ID:                  "claude-3.5-sonnet",
+			Object:              "model",
+			Created:             now,
+			OwnedBy:             "cursor",
+			Type:                "cursor",
+			DisplayName:         "Claude 3.5 Sonnet",
+			Description:         "Claude 3.5 Sonnet via Cursor",
+			ContextLength:       200000,
+			MaxCompletionTokens: 8192,
+		},
+	}
+}
+
 // GetGitHubCopilotModels returns the available models for GitHub Copilot.
 // These models are available through the GitHub Copilot API at api.githubcopilot.com.
 func GetGitHubCopilotModels() []*ModelInfo {

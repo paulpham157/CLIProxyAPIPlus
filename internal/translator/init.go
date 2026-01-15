@@ -36,4 +36,9 @@ import (
 
 	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/kiro/claude"
 	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/kiro/openai"
+
+	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/cursor/claude"
+	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/cursor/gemini"
+	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/cursor/openai/chat-completions"
+	_ "github.com/router-for-me/CLIProxyAPI/v6/internal/translator/cursor/openai/responses"
 )
