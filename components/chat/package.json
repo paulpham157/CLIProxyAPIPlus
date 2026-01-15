@@ -1,0 +1,17 @@
+{
+  "name": "chat-interface",
+  "version": "1.0.0",
+  "description": "Chat interface component for CLI Proxy API Plus",
+  "main": "chat-interface.tsx",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-syntax-highlighter": "^15.5.11",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,15 +1,21 @@
 {
-  "name": "provider-selector-ui",
+  "name": "cli-proxy-api-plus-frontend",
   "version": "1.0.0",
-  "description": "Provider selection UI component",
+  "description": "Frontend components for CLI Proxy API Plus with provider selection UI",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.5.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "@types/react-syntax-highlighter": "^15.5.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
     "typescript": "^5.3.3"
   }
 }
